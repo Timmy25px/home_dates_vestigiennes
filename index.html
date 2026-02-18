@@ -202,18 +202,62 @@ window.addEventListener("resize", checkDisplay);
 
   <!-- MAIN -->
   <div id="main">
-    <h1>SITE DU TEMPS VESTIGIEN/NOVALISIEN</h1>
+    <h1>SITE DU TEMPS VESTIGIEN</h1>
 
     <div class="buttons">
       <button class="btn" onclick="window.location.href='https://timmy25px.github.io/date_vestigienne/'">
         calendrier vestigien
       </button>
 
-      <button class="btn" onclick="window.location.href='https://timmy25px.github.io/date_vestigienne_ll/'">
-        calendrier novalisien
-      </button>
-    </div>
-  </div>
+ <div style="margin-top:20px; padding:20px; border-radius:12px; background:#f9f9f9; max-width:500px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; box-shadow:0 6px 10px rgba(0,0,0,0.1);">
+
+<h3 style="margin-top:0; margin-bottom:15px; font-weight:600;">Temps écoulé depuis l’origine vestigienne</h2>
+
+<table style="width:100%; border-collapse: collapse; text-align:left; font-size:18px;">
+<tr>
+<td style="padding:8px 10px;">Nombre de secondes écoulées</td>
+<td id="sec" style="padding:8px 10px; text-align:right; font-weight:500;"></td>
+</tr>
+
+<tr style="background:#f1f1f1;">
+<td style="padding:8px 10px;">Nombre de minutes écoulées</td>
+<td id="min" style="padding:8px 10px; text-align:right; font-weight:500;"></td>
+</tr>
+
+<tr>
+<td style="padding:8px 10px;">Nombre d’heures écoulées</td>
+<td id="hour" style="padding:8px 10px; text-align:right; font-weight:500;"></td>
+</tr>
+
+<tr style="background:#f1f1f1;">
+<td style="padding:8px 10px;">Nombre de jours écoulés</td>
+<td id="day" style="padding:8px 10px; text-align:right; font-weight:500;"></td>
+</tr>
+</table>
+
+</div>
+
+<script>
+const origineVestigienne = new Date(2022,8,28,0,0,0);
+
+function format(n){
+  return Math.floor(n).toLocaleString("fr-FR");
+}
+
+function updateVestigien(){
+  const now = new Date();
+  const s = (now - origineVestigienne)/1000;
+
+  document.getElementById("sec").textContent  = format(s);
+  document.getElementById("min").textContent  = format(s/60);
+  document.getElementById("hour").textContent = format(s/3600);
+  document.getElementById("day").textContent  = format(s/86400);
+}
+
+updateVestigien();
+setInterval(updateVestigien,1000);
+</script>
+
 
 </div>
 
@@ -233,5 +277,6 @@ setTimeout(() => {
 
 </body>
 </html>
+
 
 
